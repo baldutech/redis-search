@@ -9,10 +9,11 @@
   },
   "profiles": {
     "Redis.Search": {
+      "launchBrowser": true,
+      "launchUrl": "swagger",
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7261;http://localhost:5261",
+      "applicationUrl": "http://localhost:5261",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

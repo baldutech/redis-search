@@ -67,6 +67,11 @@ namespace Redis.Search
                     Predicate = _ => _.Tags.Contains("readiness"),
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
+                endpoints.MapHealthChecks("/health-check-database", new HealthCheckOptions
+                {
+                    Predicate = _ => _.Tags.Contains("database"),
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
             });
         }
     }

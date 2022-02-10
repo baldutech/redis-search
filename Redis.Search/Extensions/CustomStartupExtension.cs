@@ -41,7 +41,7 @@ namespace Redis.Search.Extensions
             var connectionStringRedis = configuration.GetSection("ConnectionStrings").Get<ConnectionStringsOptions>();
 
             hcBuilder
-               .AddRedis(connectionStringRedis.ConnectionStringRedis, name: "redis-search", tags: new[] { "readiness" }, timeout: TimeSpan.FromSeconds(5));
+               .AddRedis(connectionStringRedis.ConnectionStringRedis, name: "redis-search", tags: new[] { "readiness", "database" }, timeout: TimeSpan.FromSeconds(5));
 
             return services;
         }

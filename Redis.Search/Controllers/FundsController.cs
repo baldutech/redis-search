@@ -21,6 +21,7 @@ namespace Redis.Search.Controllers
             _mediator = mediator;
         }
 
+        [HttpGet]
         [Route("funds")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]

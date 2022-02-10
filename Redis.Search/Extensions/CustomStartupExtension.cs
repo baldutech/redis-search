@@ -10,21 +10,6 @@ namespace Redis.Search.Extensions
 {
     internal static class CustomStartupExtension
     {
-        public static IServiceCollection AddCustomSwagger(this IServiceCollection services)
-        {
-            services
-                .AddSwaggerGen(options =>
-                {
-                    options.SwaggerDoc("v1", new()
-                    {
-                        Version = "v1",
-                        Title = "::Api de Consulta Redis Search::"
-                    });
-                });
-
-            return services;
-        }
-
         public static IServiceCollection AddMemoryCacheConfiguration(this IServiceCollection services)
         {
             services

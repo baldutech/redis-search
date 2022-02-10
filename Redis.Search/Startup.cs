@@ -1,11 +1,14 @@
 ﻿using Autofac;
 using HealthChecks.UI.Client;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Redis.Search.Extensions;
+using Redis.Search.Shared.Filters;
+using Redis.Search.Shared.Modules;
 using System.Text.Json.Serialization;
 
 namespace Redis.Search
@@ -22,14 +25,18 @@ namespace Redis.Search
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddControllers()
+                .AddControllers(options =>
+                {
+                    options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+                })
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 });
 
             services
-                .AddCustomSwagger()
+                .AddSwaggerGen()
+                .AddMediatR(typeof(Startup))
                 .AddMemoryCacheConfiguration()
                 .AddCustomHealthCheck(Configuration)
                 .AddCustomConfiguration(Configuration);
@@ -37,7 +44,7 @@ namespace Redis.Search
 
         public virtual void ConfigureContainer(ContainerBuilder builder)
         {
-            
+            builder.RegisterModule(new ModuleApplication());
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory logger)

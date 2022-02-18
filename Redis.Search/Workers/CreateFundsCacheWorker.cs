@@ -1,10 +1,8 @@
+using MediatR;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Redis.Search.Properties;
-using Redis.Search.Shared.Domain.Funds;
+using Redis.Search.Features.UseCases.GetFunds.Models;
 using System;
-using System.Collections.Generic;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,12 +10,15 @@ namespace Redis.Search.Workers
 {
     public class CreateFundsCacheWorker : BackgroundService
     {
+        private readonly IMediator _mediator;
         private readonly ILogger<CreateFundsCacheWorker> _logger;
 
         public CreateFundsCacheWorker(
+            IMediator mediator,
             ILogger<CreateFundsCacheWorker> logger)
         {
             _logger = logger;
+            _mediator = mediator;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -26,9 +27,7 @@ namespace Redis.Search.Workers
             {
                 try
                 {
-                    var ff = JsonSerializer.Deserialize<IEnumerable<Fund>>(Resources.funds);
-
-
+                    await _mediator.Send(new CreateFundsCacheInput(), stoppingToken);
                 }
                 catch (Exception e)
                 {

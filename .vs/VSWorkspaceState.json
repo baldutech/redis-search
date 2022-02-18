@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Redis.Search",
+    "\\Redis.Search\\Features",
+    "\\Redis.Search\\Features\\UseCases",
+    "\\Redis.Search\\Features\\UseCases\\CreateFundsCache",
+    "\\Redis.Search\\Features\\UseCases\\CreateFundsCache\\Models",
+    "\\Redis.Search\\Features\\UseCases\\CreateFundsCache\\UseCase",
+    "\\Redis.Search\\Properties",
+    "\\Redis.Search\\Shared",
+    "\\Redis.Search\\Shared\\Filters"
+  ],
+  "SelectedNode": "\\Redis.Search\\Features\\UseCases\\CreateFundsCache\\UseCase\\CreateFundsCacheUseCase.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -2,10 +2,10 @@
 {
     public class FundType : Enumeration
     {
-        public static readonly FundType Xp = new FundType(1, "Aberto");
-        public static readonly FundType Rico = new FundType(2, "Fechado");
+        public static readonly FundType Opened = new ("Aberto", "1");
+        public static readonly FundType Closed = new ("Aberto", "2");
 
-        public FundType(int id, string name) : base(id, name)
+        public FundType(string id, string name) : base(id, name)
         {
         }
     }

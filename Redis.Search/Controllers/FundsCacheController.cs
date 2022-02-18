@@ -20,7 +20,7 @@ namespace Redis.Search.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("funds-cache")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]

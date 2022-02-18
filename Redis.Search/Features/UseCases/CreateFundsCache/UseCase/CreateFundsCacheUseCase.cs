@@ -39,6 +39,12 @@ namespace Redis.Search.Features.UseCases.GetFunds.UseCase
                         new HashEntry("updatedDate", updatedDate),
 
                         new HashEntry("id", fund.Id),
+                        new HashEntry("name", fund.Name),
+                        new HashEntry("class", fund.Class),
+                        new HashEntry("start", fund.Start),
+                        new HashEntry("manager", fund.Manager),
+                        new HashEntry("fundType", fund.FundTypeFormatted),
+                        new HashEntry("administrator", fund.Administrator)
                     });
                 }
                 catch (Exception e)

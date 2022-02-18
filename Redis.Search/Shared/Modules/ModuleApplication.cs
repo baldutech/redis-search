@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Options;
 using Redis.Search.Domain.Configuration;
+using Redis.Search.Shared.Domain.Enums;
 using StackExchange.Redis;
 using System.Reflection;
 
@@ -11,6 +12,7 @@ namespace Redis.Search.Shared.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
+            Enumeration.LoadValue<FundType>();
             builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
 
             _ = builder.Register(container =>

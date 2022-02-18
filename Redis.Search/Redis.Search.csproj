@@ -15,6 +15,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Content Remove="Resources\funds.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Resources\funds.json" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="6.0.1" />
         <PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.2" />
         <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.2" />
@@ -27,6 +35,21 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>

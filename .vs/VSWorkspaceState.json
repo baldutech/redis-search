@@ -11,6 +11,6 @@
     "\\Redis.Search\\Shared",
     "\\Redis.Search\\Shared\\Filters"
   ],
-  "SelectedNode": "\\Redis.Search\\Features\\UseCases\\CreateFundsCache\\UseCase\\CreateFundsCacheUseCase.cs",
+  "SelectedNode": "\\Redis.Search\\docker-compose.yml",
   "PreviewInSolutionExplorer": false
 }

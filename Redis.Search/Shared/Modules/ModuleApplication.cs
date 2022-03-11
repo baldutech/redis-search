@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using MediatR;
 using Microsoft.Extensions.Options;
+using Redis.OM;
 using Redis.Search.Domain.Configuration;
 using Redis.Search.Shared.Domain.Enums;
 using StackExchange.Redis;
@@ -21,6 +22,14 @@ namespace Redis.Search.Shared.Modules
                 return ConnectionMultiplexer.Connect(options.Value.ConnectionStringRedis).GetDatabase(0);
 
             }).As<IDatabase>().SingleInstance();
+
+            _ = builder.Register(container =>
+            {
+                var options = container.Resolve<IOptions<ConnectionStringsOptions>>();
+
+                return new RedisConnectionProvider(ConnectionMultiplexer.Connect(options.Value.ConnectionStringRedis));
+
+            }).As<RedisConnectionProvider>().SingleInstance();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MediatR;
+using Redis.OM;
+using Redis.OM.Searching.Query;
 using Redis.Search.Features.UseCases.GetFunds.Models.v1;
-using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -10,35 +11,29 @@ namespace Redis.Search.Features.UseCases.GetFunds.UseCase.v1
 {
     public class GetFundsUseCase : IRequestHandler<GetFundsInput, IEnumerable<GetFundsOutput>>
     {
-        private readonly IDatabase _database;
+        private readonly RedisConnectionProvider _database;
 
         public GetFundsUseCase(
-            IDatabase database)
+            RedisConnectionProvider database)
         {
             _database = database;
         }
 
         public async Task<IEnumerable<GetFundsOutput>> Handle(GetFundsInput request, CancellationToken cancellationToken)
         {
-            var redisResults = await _database.ExecuteAsync("FT.SEARCH", request.RedisQueryFormatted);
-
-            return ((RedisResult[])redisResults).Where(x => x.Type == ResultType.MultiBulk).Select(redisResult =>
+            var redisQuery = new RedisQuery("fund-index")
             {
-                var redisResultIntern = redisResult.ToDictionary();
-
-                redisResultIntern.TryGetValue("cnpj", out RedisResult? cnpj);
-                redisResultIntern.TryGetValue("name", out RedisResult? name);
-                redisResultIntern.TryGetValue("fundId", out RedisResult? fundId);
-                redisResultIntern.TryGetValue("isActive", out RedisResult? isActive);
-                
-                return new GetFundsOutput
+                Limit = new SearchLimit
                 {
-                    Id = ((int?)fundId),
-                    Cnpj = ((string)cnpj),
-                    Name = ((string)name),
-                    IsActive = ((string)isActive) == null ? null : bool.Parse(((string)isActive))
-                };
-            });
+                    Number = request.Limit ?? 10,
+                    Offset = request.Offset ?? 0,
+                },
+                QueryText = request.GetQueryTextFormatted(),
+                Return = new ReturnFields(request.Select.Split(","))
+            };
+            var redisResults = await _database.Connection.SearchAsync<GetFundsOutput>(redisQuery);
+
+            return redisResults.Documents.Select(fund => fund.Value);
         }
     }
 }

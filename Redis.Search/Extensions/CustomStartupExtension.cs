@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +12,30 @@ namespace Redis.Search.Extensions
 {
     internal static class CustomStartupExtension
     {
+        public static IServiceCollection AddCustomSwagger(this IServiceCollection services)
+        {
+            services
+                .AddSwaggerGen();
+
+            services.AddApiVersioning(o =>
+            {
+                o.UseApiBehavior = false;
+                o.ReportApiVersions = true;
+                o.DefaultApiVersion = new ApiVersion(1, 0);
+                o.AssumeDefaultVersionWhenUnspecified = true;
+
+                o.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+            });
+
+            services.AddVersionedApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
+            });
+
+            return services;
+        }
+
         public static IServiceCollection AddMemoryCacheConfiguration(this IServiceCollection services)
         {
             services

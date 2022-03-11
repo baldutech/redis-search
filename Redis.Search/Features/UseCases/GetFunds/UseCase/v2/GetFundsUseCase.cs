@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Redis.Search.Features.UseCases.GetFunds.Models;
+using Redis.Search.Features.UseCases.GetFunds.Models.v2;
 using StackExchange.Redis;
 using System.Collections.Generic;
 using System.Linq;

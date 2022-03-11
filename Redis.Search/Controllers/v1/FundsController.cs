@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Redis.Search.Features.UseCases.GetFunds.Models;
+using Redis.Search.Features.UseCases.GetFunds.Models.v1;
 using System.Linq;
 using System.Net;
 using System.Threading;

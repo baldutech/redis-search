@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Redis.Search.Domain.Configuration;
+using Redis.Search.Extensions.Swagger;
 using System;
 
 namespace Redis.Search.Extensions
@@ -75,6 +76,7 @@ namespace Redis.Search.Extensions
         public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddOptions();
+            services.ConfigureOptions<ConfigureSwaggerOptions>();
             services.Configure<ConnectionStringsOptions>(configuration.GetSection("ConnectionStrings"));
 
             return services;

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Redis.Search.Features.UseCases.GetFunds.Models;
+using Redis.Search.Features.UseCases.GetFunds.Models.v2;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -23,7 +23,7 @@ namespace Redis.Search.Controllers.v2
         }
 
         [HttpGet]
-        [Route("funds")][ApiVersion("2.0")]
+        [Route("funds")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]

@@ -3,6 +3,7 @@ using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -47,10 +48,15 @@ namespace Redis.Search
             builder.RegisterModule(new ModuleApplication());
         }
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory logger)
+        public void Configure(IApplicationBuilder app, IApiVersionDescriptionProvider apiVersionDescriptionProvider)
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwagger().UseSwaggerUI(setup =>
+            {
+                foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
+                {
+                    setup.SwaggerEndpoint($"../swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                }
+            });
 
             app.UseRouting();
             app.UseResponseCompression();

@@ -1,4 +1,4 @@
-﻿namespace Redis.Search.Features.UseCases.GetFunds.Models
+﻿namespace Redis.Search.Features.UseCases.GetFunds.Models.v1
 {
     public class GetFundsOutput
     {

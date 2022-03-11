@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Collections.Generic;
 
-namespace Redis.Search.Features.UseCases.GetFunds.Models
+namespace Redis.Search.Features.UseCases.GetFunds.Models.v2
 {
     public class GetFundsInput : IRequest<IEnumerable<GetFundsOutput>>
     {

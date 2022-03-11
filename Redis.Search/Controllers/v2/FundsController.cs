@@ -6,9 +6,10 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Redis.Search.Controllers
+namespace Redis.Search.Controllers.v2
 {
     [ApiController]
+    [ApiVersion("2.0")]
     [Produces("application/json")]
     
     public class FundsController : ControllerBase
@@ -22,7 +23,7 @@ namespace Redis.Search.Controllers
         }
 
         [HttpGet]
-        [Route("funds")]
+        [Route("funds")][ApiVersion("2.0")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]

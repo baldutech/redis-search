@@ -35,7 +35,7 @@ namespace Redis.Search
                 });
 
             services
-                .AddSwaggerGen()
+                .AddCustomSwagger()
                 .AddMediatR(typeof(Startup))
                 .AddMemoryCacheConfiguration()
                 .AddCustomHealthCheck(Configuration)

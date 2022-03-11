@@ -10,11 +10,11 @@ namespace Redis.Search.Controllers
     [ApiController]
     [Produces("application/json")]
     
-    public class FundsCacheController : ControllerBase
+    public class CacheController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public FundsCacheController(
+        public CacheController(
             IMediator mediator)
         {
             _mediator = mediator;

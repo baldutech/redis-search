@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Redis.Search.Features.UseCases.GetFunds.UseCase
+namespace Redis.Search.Features.UseCases.GetFunds.UseCase.v1
 {
     public class GetFundsUseCase : IRequestHandler<GetFundsInput, IEnumerable<GetFundsOutput>>
     {

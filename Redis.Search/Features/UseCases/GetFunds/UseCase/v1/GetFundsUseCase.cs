@@ -28,7 +28,7 @@ namespace Redis.Search.Features.UseCases.GetFunds.UseCase.v1
                     Number = request.Limit ?? 10,
                     Offset = request.Offset ?? 0,
                 },
-                QueryText = request.GetQueryTextFormatted(),
+                QueryText = request.QueryText,
                 Return = new ReturnFields(request.Select.Split(","))
             };
             var redisResults = await _database.Connection.SearchAsync<GetFundsOutput>(redisQuery);

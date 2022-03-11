@@ -6,14 +6,8 @@ namespace Redis.Search.Features.UseCases.GetFunds.Models.v1
     {
         [RedisIdField]
         public int? id { get; set; }
-
-        [Indexed]
         public string? cnpj { get; set; }
-
-        [Indexed]
         public string? name { get; set; }
-
-        [Indexed]
-        public bool? isActive { get; set; }
+        public string? @class { get; set; }
     }
 }

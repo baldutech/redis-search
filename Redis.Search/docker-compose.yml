@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  redis.search:
+    image: ${DOCKER_REGISTRY-}redissearch
+    build:
+      context: .
+      dockerfile: Dockerfile

@@ -7,6 +7,7 @@
         <UserSecretsId>fa27584e-c2ff-48eb-ac21-69e0393ee984</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>.</DockerfileContext>
+        <DockerComposeProjectPath>docker-compose.dcproj</DockerComposeProjectPath>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

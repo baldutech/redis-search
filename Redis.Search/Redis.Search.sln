@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redis.Search", "Redis.Search.csproj", "{4B813181-55A4-465B-9C3A-BB38136743FF}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F929257C-308E-4B91-AD59-F99EFC9D199F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{4B813181-55A4-465B-9C3A-BB38136743FF}.Debug|x64.Build.0 = Debug|x64
 		{4B813181-55A4-465B-9C3A-BB38136743FF}.Release|x64.ActiveCfg = Release|x64
 		{4B813181-55A4-465B-9C3A-BB38136743FF}.Release|x64.Build.0 = Release|x64
+		{F929257C-308E-4B91-AD59-F99EFC9D199F}.Debug|x64.ActiveCfg = Debug|x64
+		{F929257C-308E-4B91-AD59-F99EFC9D199F}.Debug|x64.Build.0 = Debug|x64
+		{F929257C-308E-4B91-AD59-F99EFC9D199F}.Release|x64.ActiveCfg = Release|x64
+		{F929257C-308E-4B91-AD59-F99EFC9D199F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

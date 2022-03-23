@@ -19,16 +19,23 @@
       "dotnetRunMessages": true
     },
     "Wsl": {
-      "useSSL": true,
       "commandName": "WSL2",
       "launchBrowser": true,
-      "publishAllPorts": true,
-      "distributionName": "Ubuntu-20.04",
       "launchUrl": "https://localhost:5001/swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000"
-      }
+      },
+      "distributionName": "Ubuntu-20.04",
+      "publishAllPorts": true,
+      "useSSL": true
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "useSSL": true
     }
   }
 }

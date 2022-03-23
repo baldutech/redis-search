@@ -5,7 +5,6 @@ namespace Redis.Search.Features.UseCases.GetFunds.Models.v1
 {
     public class GetFundsInput : IRequest<IEnumerable<GetFundsOutput>>
     {
-        public int? Id { get; set; }
         public int? Limit { get; set; }
         public int? Offset { get; set; }
         public string QueryText { get; set; } = "*";
